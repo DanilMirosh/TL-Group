@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Структура отделов</h1>
+  <ul>
+    {% for department in departments %}
+      <li>{{ department.name }}
+        {% if department.department_set.all %}
+          <ul>
+            {% for sub_department in department.department_set.all %}
+              <li>{{ sub_department.name }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
